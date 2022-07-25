@@ -19,9 +19,8 @@ func main() {
 	var wg sync.WaitGroup
 	for i := 0; i < 65535; i++ {
 		wg.Add(1)
-		go func(i int) {
+		go func(port int) {
 			defer wg.Done()
-			port := i
 			conn, err := net.Dial("tcp", fmt.Sprintf("%s:%d", *host, port))
 			if err != nil {
 				return
